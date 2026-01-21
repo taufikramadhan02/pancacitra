@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PancaCitra - Pengolahan Citra Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold">PancaCitra</a>
+            <ul class="navbar-nav ms-auto flex-row">
+                <li class="nav-item me-3"><a class="nav-link" onclick="showHome()" style="cursor:pointer">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showFeatures()" style="cursor:pointer">Fitur</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="container mt-5 pt-5">
+        <div class="hero text-center mb-5">
+            <h1 class="mb-3">PancaCitra</h1>
+            <p class="mb-2">Transformasikan Gambar Anda dengan <span class="text-warning">Kekuatan Algoritma</span></p>
+            <p class="text-muted mb-4">Transformasi Digital Berbasis Algoritma</p>
+            <button class="btn btn-primary btn-lg mt-3 px-5" onclick="showFeatures()">
+                <i class="bi bi-play-circle me-2"></i>Mulai Sekarang
+            </button>
+        </div>
+
+        <!-- INFO CARD -->
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-image text-primary display-6 mb-3"></i>
+                        <h5 class="card-title">Pemrosesan Real-time</h5>
+                        <p class="card-text text-muted">Ubah gambar Anda secara instan dengan berbagai algoritma pengolahan citra digital.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calculator text-primary display-6 mb-3"></i>
+                        <h5 class="card-title">Perhitungan Manual</h5>
+                        <p class="card-text text-muted">Setiap transformasi menggunakan perhitungan matematika yang transparan dan dapat diverifikasi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-download text-primary display-6 mb-3"></i>
+                        <h5 class="card-title">Hasil Download</h5>
+                        <p class="card-text text-muted">Simpan hasil pengolahan gambar Anda dalam format berkualitas tinggi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4">
+                <div class="p-4 rounded" style="background-color: #f8f9fa;">
+                    <h4 class="mb-3"><i class="bi bi-check-circle text-success me-2"></i>Fitur Unggulan</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Filter Warna & Efek Khusus</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Penyesuaian Brightness & Contrast</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Deteksi Tepi (Edge Detection)</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Smoothing & Sharpening</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Thresholding & Histogram</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-primary"></i> Transformasi </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="p-4 rounded" style="background-color: #f8f9fa;">
+                    <h4 class="mb-3"><i class="bi bi-lightbulb text-warning me-2"></i>Cara Penggunaan</h4>
+                    <ol class="ps-3">
+                        <li class="mb-2">Klik tombol <strong>"Mulai Sekarang"</strong></li>
+                        <li class="mb-2">Unggah gambar dari perangkat Anda</li>
+                        <li class="mb-2">Pilih fitur pengolahan yang diinginkan</li>
+                        <li class="mb-2">Atur parameter sesuai kebutuhan</li>
+                        <li class="mb-2">Download hasil pengolahan gambar</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-muted mt-5 pt-4 border-top">
+            <p class="mb-1"><small>PancaCitra - Tools Pengolahan Citra Digital</small></p>
+            <p class="mb-0"><small>Dikembangkan untuk pembelajaran pengolahan citra dengan algoritma Matematika</small></p>
+        </div>
+    </section>
+    <!-- FEATURES -->
+    <section id="features" class="container mt-4" style="display:none">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item" onclick="openPanel('filter')">Filter Warna</a>
+                    <a class="list-group-item" onclick="openPanel('adjustment')">Penyesuaian Gambar</a>
+                    <a class="list-group-item" onclick="openPanel('transform')">Transformasi</a>
+                    <a class="list-group-item" onclick="openPanel('edge')">Deteksi Tepi</a>
+                    <a class="list-group-item" onclick="openPanel('smooth')">Smoothing</a>
+                    <a class="list-group-item" onclick="openPanel('sharpen')">Sharpening</a>
+                    <a class="list-group-item" onclick="openPanel('threshold')">Thresholding</a>
+                    <a class="list-group-item" onclick="openPanel('histogram')">Histogram</a>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col-md-9">
+                <div class="canvas-card">
+                    <input type="file" id="imageInput" class="form-control mb-4" accept="image/*">
+
+                    <div class="row text-center">
+                        <div class="col-md-6 mb-3">
+                            <div class="canvas-label">Gambar Asli</div>
+                            <div class="canvas-container">
+                                <canvas id="canvasBefore"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="canvas-label">Hasil Proses</div>
+                            <div class="canvas-container">
+                                <canvas id="canvasAfter"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- FILTER WARNA -->
+                    <div id="filterPanel" class="panel">
+                        <h6 class="mb-3">Filter Warna</h6>
+                        <select id="filterType" class="form-select">
+                            <option value="none">Normal</option>
+                            <option value="grayscale">Grayscale</option>
+                            <option value="negative">Negative</option>
+                            <option value="sepia">Sepia</option>
+                            <option value="red">Filter Merah</option>
+                            <option value="green">Filter Hijau</option>
+                            <option value="blue">Filter Biru</option>
+                        </select>
+                        <div class="info-box mt-3">
+                            <small>Grayscale: Y = 0.299R + 0.587G + 0.114B</small>
+                        </div>
+                    </div>
+
+                    <!-- PENYESUAIAN GAMBAR -->
+                    <div id="adjustmentPanel" class="panel">
+                        <h6 class="mb-3">Penyesuaian Gambar</h6>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Brightness</span>
+                                <span id="brightnessVal">0</span>
+                            </div>
+                            <input type="range" id="brightness" min="-100" max="100" value="0">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Contrast</span>
+                                <span id="contrastVal">1.0</span>
+                            </div>
+                            <input type="range" id="contrast" min="0" max="3" step="0.1" value="1.0">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Saturation</span>
+                                <span id="saturationVal">1.0</span>
+                            </div>
+                            <input type="range" id="saturation" min="0" max="3" step="0.1" value="1.0">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Hue</span>
+                                <span id="hueVal">0°</span>
+                            </div>
+                            <input type="range" id="hue" min="-180" max="180" value="0">
+                        </div>
+
+                        <div class="info-box">
+                            <small>Brightness: pixel + nilai | Contrast: (pixel - 128) × faktor + 128</small>
+                        </div>
+                    </div>
+
+                    <!-- TRANSFORMASI -->
+                    <div id="transformPanel" class="panel">
+                        <h6 class="mb-3">Transformasi Geometri</h6>
+                        <div class="btn-group-transform">
+                            <button class="btn btn-secondary" onclick="flipHorizontal()">Flip Horizontal</button>
+                            <button class="btn btn-secondary" onclick="flipVertical()">Flip Vertikal</button>
+                            <button class="btn btn-secondary" onclick="rotate90()">Putar 90°</button>
+                            <button class="btn btn-secondary" onclick="rotate180()">Putar 180°</button>
+                            <button class="btn btn-secondary" onclick="rotate270()">Putar 270°</button>
+                        </div>
+                        <div class="info-box mt-3">
+                            <small>Transformasi geometri mengubah posisi piksel tanpa mengubah nilai warna</small>
+                        </div>
+                    </div>
+
+                    <!-- DETEKSI TEPI -->
+                    <div id="edgePanel" class="panel">
+                        <h6 class="mb-3">Deteksi Tepi</h6>
+                        <select id="edgeType" class="form-select">
+                            <option value="off">Off</option>
+                            <option value="roberts">Roberts Cross</option>
+                            <option value="prewitt">Prewitt</option>
+                            <option value="sobel">Sobel</option>
+                            <option value="laplacian">Laplacian</option>
+                            <option value="canny">Canny</option>
+                        </select>
+                        <div class="info-box mt-3">
+                            <small>Operator konvolusi untuk mendeteksi gradien intensitas</small>
+                        </div>
+                    </div>
+
+                    <!-- SMOOTHING -->
+                    <div id="smoothPanel" class="panel">
+                        <h6 class="mb-3">Smoothing / Blur</h6>
+                        <select id="smoothType" class="form-select mb-3">
+                            <option value="off">Off</option>
+                            <option value="mean">Mean Filter</option>
+                            <option value="gaussian">Gaussian Blur</option>
+                            <option value="median">Median Filter</option>
+                        </select>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Kernel Size</span>
+                                <span id="smoothSizeVal">3</span>
+                            </div>
+                            <input type="range" id="smoothSize" min="3" max="9" step="2" value="3">
+                        </div>
+                        <div class="info-box">
+                            <small>Mean: rata-rata, Median: nilai tengah setelah sorting</small>
+                        </div>
+                    </div>
+
+                    <!-- SHARPENING -->
+                    <div id="sharpenPanel" class="panel">
+                        <h6 class="mb-3">Sharpening</h6>
+                        <select id="sharpenType" class="form-select mb-3">
+                            <option value="off">Off</option>
+                            <option value="basic">Basic Sharpen</option>
+                            <option value="unsharp">Unsharp Masking</option>
+                        </select>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Intensitas</span>
+                                <span id="sharpenAmountVal">1.0</span>
+                            </div>
+                            <input type="range" id="sharpenAmount" min="0" max="3" step="0.1" value="1.0">
+                        </div>
+                        <div class="info-box">
+                            <small>Sharpened = Original + Amount × (Original - Blurred)</small>
+                        </div>
+                    </div>
+
+                    <!-- THRESHOLDING -->
+                    <div id="thresholdPanel" class="panel">
+                        <h6 class="mb-3">Thresholding</h6>
+                        <select id="thresholdType" class="form-select mb-3">
+                            <option value="off">Off</option>
+                            <option value="binary">Binary</option>
+                            <option value="otsu">Otsu (Adaptive)</option>
+                        </select>
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>Threshold Value</span>
+                                <span id="thresholdVal">128</span>
+                            </div>
+                            <input type="range" id="thresholdValue" min="0" max="255" value="128">
+                        </div>
+                        <div class="info-box">
+                            <small>Otsu: metode statistik untuk threshold optimal otomatis</small>
+                        </div>
+                    </div>
+
+                    <!-- HISTOGRAM -->
+                    <div id="histogramPanel" class="panel">
+                        <h6 class="mb-3">Histogram</h6>
+                        <button class="btn btn-primary mb-3" onclick="drawHistogram()">Tampilkan Histogram</button>
+                        <button class="btn btn-secondary mb-3 ms-2" onclick="equalizeHistogram()">Histogram Equalization</button>
+                        <canvas id="histCanvas" height="150" style="width:100%"></canvas>
+                        <div class="info-box mt-3">
+                            <small>Histogram Equalization meningkatkan kontras dengan redistribusi intensitas</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <button class="btn btn-secondary" onclick="resetImage()">Reset</button>
+                        <button class="btn btn-primary" onclick="downloadImage()">Download</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
